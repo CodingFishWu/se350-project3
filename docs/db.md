@@ -19,7 +19,7 @@ predefined product(in our case, it is defined by broker)
 | code       | String |
 | unit       | String |
 | type       | String |
-| isDeleted  | boolean| check if it is deleted |
+| is_deleted  | boolean| check if it is deleted |
 
 ### order
 
@@ -29,7 +29,6 @@ predefined product(in our case, it is defined by broker)
 | ---------- | ------ | ----------- |
 | id         | Int    |
 | trader_id  | Int    |
-| detail_id  | Int    | foreign key of order_detial|
 | s_b        | String | 'sell' or 'buy' |
 | type       | String |'market' or 'limit' or 'stop' or 'cancel' |
 | status     | String |'finish', 'pending', 'cancel' |
@@ -38,7 +37,7 @@ predefined product(in our case, it is defined by broker)
 | stop_price | double | height price(used for stop order)|
 | price      | double | wondered price |
 | remain     | double | remain amount of order |
-| createdTime| Date   |
+| created_time| Date   |
 
 ### transaction
 
@@ -48,6 +47,6 @@ to describe a deal
 | ---------- | ------ | ----------- |
 | id         | Int    |
 | order_id   | Int    |
-| createdTime| Date   |
+| created_time| Date   |
 | price      | double |
 | amount     | double |

@@ -34,7 +34,6 @@ predefined product(in our case, it is defined by broker)
 | status     | String |'finish', 'pending', 'cancel' |
 | product_id | Int    |
 | amount     | double | 
-| stop_price | double | height price(used for stop order)|
 | price      | double | wondered price |
 | remain     | double | remain amount of order |
 | created_time| Date   |

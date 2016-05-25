@@ -38,6 +38,10 @@ paths:
             type: array
             items:
               $ref: '#/definitions/User'
+        403:
+          description: haven't login
+          schema:
+            $ref: '#/definitions/Error403'
         default:
           description: Unexpected error
           schema:
@@ -61,11 +65,15 @@ paths:
           description: Return an object of user
           schema:
             $ref: '#/definitions/User'
+        403:
+          description: haven't login
+          schema:
+            $ref: '#/definitions/Error403'
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-
+            
   /me:
     get:
       summary: get a specific user
@@ -77,11 +85,14 @@ paths:
           description: Return an object of user
           schema:
             $ref: '#/definitions/User'
+        403:
+          description: haven't login
+          schema:
+            $ref: '#/definitions/Error403'
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
-
 
   /user/login:
     post:
@@ -95,7 +106,6 @@ paths:
             $ref: '#/definitions/User'
       tags:
         - User
-        - trader
         - broker
       responses:
         200:
@@ -129,6 +139,7 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      deprecated: true
 
   /product:
     get:
@@ -157,6 +168,10 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Product'
+        403:
+          description: haven't login
+          schema:
+            $ref: '#/definitions/Error403'
         default:
           description: Unexpected error
           schema:
@@ -178,6 +193,10 @@ paths:
           description: create success
           schema:
             $ref: '#/definitions/Product'
+        403:
+          description: haven't login
+          schema:
+            $ref: '#/definitions/Error403'
         default:
           description: Unexpected error
           schema:
@@ -201,6 +220,10 @@ paths:
           description: delete success
           schema:
             $ref: '#/definitions/Product'
+        403:
+          description: haven't login
+          schema:
+            $ref: '#/definitions/Error403'
         default:
           description: Unexpected error
           schema:
@@ -231,6 +254,10 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Order'
+        403:
+          description: haven't login
+          schema:
+            $ref: '#/definitions/Error403'
         default:
           description: Unexpected error
           schema:
@@ -252,6 +279,10 @@ paths:
           description: create success
           schema:
             $ref: '#/definitions/Order'
+        403:
+          description: haven't login
+          schema:
+            $ref: '#/definitions/Error403'
         default:
           description: Unexpected error
           schema:
@@ -277,6 +308,10 @@ paths:
             type: array
             items:
               $ref: '#/definitions/SimpleOrder'
+        403:
+          description: haven't login
+          schema:
+            $ref: '#/definitions/Error403'
         default:
           description: Unexpected error
           schema:
@@ -360,6 +395,11 @@ definitions:
         format: double
 
 
+  Error403:
+    type: object
+    properties:
+      message:
+        type: string
 
   Error:
     type: object

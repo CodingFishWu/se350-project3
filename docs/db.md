@@ -6,7 +6,6 @@ for login purpose
 | -------- | ------ | ----------- |
 | id       | Int    |
 | password | String |
-| type     | String |'trader' or 'broker'|
 
 ### product
 
@@ -28,11 +27,10 @@ predefined product(in our case, it is defined by broker)
 | field      | type   | description |
 | ---------- | ------ | ----------- |
 | id         | Int    |
-| trader_id  | Int    |
 | s_b        | String | 'sell' or 'buy' |
 | type       | String |'market' or 'limit' or 'stop' or 'cancel' |
 | status     | String |'finish', 'pending', 'cancel' |
-| product_id | Int    |
+| product_code| String|
 | amount     | double | 
 | price      | double | wondered price |
 | remain     | double | remain amount of order |

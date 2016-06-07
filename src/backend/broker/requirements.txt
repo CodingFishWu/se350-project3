@@ -1,0 +1,6 @@
+django-cors-headers
+django-crontab
+django-redis
+mysqlclient
+redis
+djangorestframework

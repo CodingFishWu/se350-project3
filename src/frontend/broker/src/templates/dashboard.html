@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <rd-widget>
+      <rd-widget-body>
+        <div class="widget-icon red pull-left">
+          <i class="fa fa-tasks"></i>
+        </div>
+        <div class="title">{{ctrl.traders.length}}</div>
+        <div class="comment">Traders</div>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <rd-widget>
+      <rd-widget-header icon="fa-tasks" title="Trader Gateway">
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>IP</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in ctrl.traders track by $index">
+                <td>{{item.name}}</td>
+                <td>{{item.ip}}</td>
+                <td><span class="text-success"><i class="fa fa-check"></i></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+  <div class="col-lg-6">
+    <rd-widget>
+      <rd-widget-header icon="fa-tasks" title="Transaction">
+        <a ui-sref="transaction">manage</a>
+      </rd-widget-header>
+      <rd-widget-body classes="medium no-padding">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="text-center">ID</th>
+                <th>Product Code</th>
+                <th>Price</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat='item in ctrl.transactions track by $index'>
+                <td class="text-center">{{item.id}}</td>
+                <td>{{item.code}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.created_time * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </rd-widget-body>
+    <rd-widget>
+  </div>
+</div>

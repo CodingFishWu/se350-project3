@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-lg-12">
+    <form class="form-inline">
+      <div class="form-group">
+        <label>product</label>
+        <input type="text" class="form-control" ng-model="ctrl.code" placeholder="input product code">
+      </div>
+      <button class="btn btn-sm btn-primary" ng-click="ctrl.search()">search</button>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <rd-widget>
+      <rd-widget-header icon="fa-tasks" title="Buy">
+      </rd-widget-header>
+      <rd-widget-body classes="large no-padding">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr><th class="text-center">ID</th><th>Price</th><th>Amount</th></tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in ctrl.buys track by $index"><td>{{$index + 1}}</td><td>{{item.price}}</td><td>{{item.amount}}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </rd-widget-body>
+    </rd-widget>
+  </div>
+  <div class="col-lg-6">
+    <rd-widget>
+      <rd-widget-header icon="fa-tasks" title="Sell">
+      </rd-widget-header>
+      <rd-widget-body classes="large no-padding">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr><th class="text-center">ID</th><th>Price</th><th>Amount</th></tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in ctrl.sells track by $index"><td>{{$index + 1}}</td><td>{{item.price}}</td><td>{{item.amount}}</td></tr>
+            </tbody>
+          </table>
+            </div>
+      </rd-widget-body>
+    <rd-widget>
+  </div>
+</div>

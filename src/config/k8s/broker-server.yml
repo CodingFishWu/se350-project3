@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: django
+  labels:
+    app: django
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 8000
+    targetPort: 8000
+  selector:
+    app: django
+  type: LoadBalancer
+
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: django
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+      - name: django
+        image: gcr.io/se350-project-3/broker-server:v1
+        ports:
+        - containerPort: 8000

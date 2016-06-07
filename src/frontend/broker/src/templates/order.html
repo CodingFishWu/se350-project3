@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-lg-12">
+    <form class="form-inline">
+      <div class="form-group">
+        <label>product</label>
+        <input type="text" class="form-control" ng-model="ctrl.code" placeholder="product code">
+      </div>
+      <div class="form-group">
+        <label>type</label>
+        <select ng-model="ctrl.type">
+          <option ng-repeat="item in ctrl.types track by $index">{{item}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>status</label>
+        <select ng-model="ctrl.status">
+          <option ng-repeat="item in ctrl.statuses track by $index">{{item}}</option>
+        </select>
+      </div>
+      <button class="btn btn-sm btn-primary" ng-click="ctrl.search()">search</button>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <rd-widget>
+      <rd-widget-header icon="fa-tasks" title="Transaction">
+      </rd-widget-header>
+      <rd-widget-body classes="large no-padding">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="text-center">ID</th>
+                <th>Product Code</th>
+                <th>Status</th>
+                <th>Sell or Buy</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Amount</th>
+                <th>Remain</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in ctrl.orders track by $index">
+                <td>{{item.id}}</td>
+                <td>{{item.product_code}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.s_b}}</td>
+                <td>{{item.type}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.amount}}</td>
+                <td>{{item.remain}}</td>
+                <td>{{item.created_time*1000|date:'yyyy-MM-dd HH:mm:ss'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>      
+      </rd-widget-body>
+      <rd-widget-footer>
+        <ul class="pagination pagination-sm pull-right">
+          <li ng-repeat="item in ctrl.pages track by $index" ng-click="ctrl.switchPage($index)"><a href="">{{item}}</a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </rd-widget-footer>
+    </rd-widget>
+  </div>
+</div>

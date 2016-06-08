@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8000';
+const baseUrl = 'http://104.199.165.224:8000';
 
 angular.module('resources', ['ngResource'])
 

@@ -19,7 +19,7 @@ class Api extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	private function sendOrder($broker,$item) {
-		echo json_encode($item);
+		$this->load->library('PHPRequests');
 		$result = Requests::post($broker.'/order',array('Content-Type' => 'application/json'),json_encode($item));
 		var_dump($result->body);
 	}
@@ -63,7 +63,7 @@ class Api extends CI_Controller {
 		$divide = 1;
 		$per = $amount;
 		if ($amount > 100) {
-			$divide = 4;
+			$divide = 2;
 			$per = ceil($amount/$divide);
 			for ($i = 0;$i < $divide;$i++) {
 				$orderItem = array(
@@ -118,9 +118,10 @@ class Api extends CI_Controller {
 	public function cancel_order() {
 		header('Access-Control-Allow-Origin:*');
 		header("Access-Control-Allow-Methods", "POST");
+		$this->load->model('order_model');
 		$field = $this->input->post(NULL,TRUE);
 		$this->db->where('id',$field['oid']);
-		$this->db->update('order_group',array('status'=>canceled));
+		$this->db->update('order_group',array('status'=>'canceled'));
 		$this->db->where('id',$field['oid']);
 		$query = $this->db->get('order_group')->result();
 		$order = $query[0];
@@ -131,19 +132,22 @@ class Api extends CI_Controller {
 			$sendItem = array(
 				'ip' => "192.241.193.159",
 				'order_id' => $row->id,
-				'code' => $order->code,
+				'code' => $order->product_code,
 				's_b' => $order->s_b,
 				'price' => 0,
 				'type' => 'cancel',
 				'amount' => 0
 			);
 			$this->sendOrder($row->broker,$sendItem);
+			$this->order_model->cancel($row->id);
 		}
 		return 1;
 	}
 
-	public function get_transaction() {
+	public function get_transaction($code) {
 		header('Access-Control-Allow-Origin:*');
+		$this->load->model('trans_model');
+		echo json_encode($this->trans_model->get($code));
 	}
 
 	public function add_transaction() {

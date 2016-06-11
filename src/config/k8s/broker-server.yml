@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
       - name: django
-        image: gcr.io/se350-project-3/broker-server:v1
+        image: gcr.io/se350-project-3/broker-server:v2
         ports:
         - containerPort: 8000

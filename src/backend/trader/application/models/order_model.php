@@ -64,7 +64,7 @@ class Order_model extends CI_Model {
 
       if ($order->remain > $field['amount']) {
         $this->db->where('id',$field['o_id']);
-        $this->db->update('order_item',array('remain'=>$order->reamin-$field['amount']));
+        $this->db->update('order_item',array('remain'=>$order->remain-$field['amount']));
       } else {
         $this->db->update('order_item',array('remain'=>0,'status'=>'finished'));
       }
